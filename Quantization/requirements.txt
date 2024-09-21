@@ -1,0 +1,11 @@
+# requirements file
+
+accelerate
+ipython
+ipywidgets
+numpy
+Pillow
+quanto
+torch
+transformers
+sentencepiece
