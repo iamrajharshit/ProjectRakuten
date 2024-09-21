@@ -49,7 +49,7 @@ plugins:
 extra:
   social:
   - icon: fontawesome/brands/github
-    link: https://github.com/iamrajharshit
+    link: https://github.com/iamrajharshit/ProjectRakuten
     name: GitHub
   - icon: fontawesome/brands/linkedin
     link: https://www.linkedin.com/in/iamrajharshit
