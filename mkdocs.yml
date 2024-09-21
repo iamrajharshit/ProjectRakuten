@@ -60,7 +60,6 @@ extra:
 
 
 markdown_extensions:
-  - mdx_math
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - admonition
