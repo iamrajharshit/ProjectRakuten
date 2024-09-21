@@ -75,8 +75,23 @@ Input: `What is the capital of India?` -> `Base LLM` -> Output: `What is the cap
 - Finetuning for generative tasks in not well-defined:
     - Updates entire model, not just part of it
     - Same training objective; next token prediction
-    
 
+- Behavior change
+    - Learning to respond more consistently, eg :Chat model, in a chat interface won't generate text like survey.
+    - Learning to focus, eg: moderation.
+    - Better at conversation
+- Gain knowledge
+    - Increasing knowledge of new specific concepts
+    - Correcting old incorrect information
+
+### Steps to finetune
+ 1. Identify task(s) by prompt-engineerig a large LLM, like ChatGPT
+ 2. Find taks that you see an LLM doing ~OK at
+ 3. Pick one task
+ 4. Get ~1000 inputs and outputs pair for the task, better than the ~OK from the LLM. 
+ 5. Finetune a small LLM on this data
+
+### 
 ## Data Preparation
 
 
