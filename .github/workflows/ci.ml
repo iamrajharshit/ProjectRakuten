@@ -1,5 +1,4 @@
 name: ci
-
 on:
   push:
     branches:
@@ -11,7 +10,7 @@ permissions:
 
 jobs:
   deploy:
-    runs-on: windows-latest  # Change from 'ubuntu-latest' to 'windows-latest'
+    runs-on: windows-latest  
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
