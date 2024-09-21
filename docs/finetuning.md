@@ -6,7 +6,7 @@ Fine-tuning is a process in machine learning where a pre-trained model is adapte
 
 ### What is finetuning?
 
-<img src="https://github.com/iamrajharshit/ProjectRakuten/blob/main/docs/img/fine/fine1.png">
+![Image](img/fine/fine1.png)
 
 - It's like taking general purpose model for example GPT-3 and specializing them into something like ChatGPT.
 - Or taking GPT-4 and turning that into a specialized GitHub co-pilot use case to auto complelte code.
