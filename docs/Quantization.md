@@ -42,7 +42,7 @@ Here, we train a student model, which is the target-compressed model using the o
 - This process can be computationally expensive due to the need to run both the teacher and student models simultaneously during training.
 
 ## Quantization
-![qunat](./img/quant/diag/06_quant.jpg)
+![qunat](./img/quant/diag/04_Quantiaztion.png)
 
 Quantization simply consists of repesenting model weights or activations in a low precision.
 
