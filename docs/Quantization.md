@@ -183,7 +183,6 @@ replace_linear_with_target_and_quantize(model,
 ```
 pipe.model.get_parameter
 ```
-
 ```
 <bound method Module.get_parameter of CodeGenForCausalLM(
   (transformer): CodeGenModel(
