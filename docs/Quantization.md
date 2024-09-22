@@ -111,6 +111,38 @@ model = AutoModelForCausalLM.from_pretrained(model_id,
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 ```
 ##### Before Quantization
+
+- Parameters:
+```
+model.get_parameter
+```
+```
+<bound method Module.get_parameter of CodeGenForCausalLM(
+  (transformer): CodeGenModel(
+    (wte): Embedding(51200, 1024)
+    (drop): Dropout(p=0.0, inplace=False)
+    (h): ModuleList(
+      (0-19): 20 x CodeGenBlock(
+        (ln_1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (attn): CodeGenAttention(
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+          (resid_dropout): Dropout(p=0.0, inplace=False)
+          (qkv_proj): Linear(in_features=1024, out_features=3072, bias=False)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=False)
+        )
+        (mlp): CodeGenMLP(
+          (fc_in): Linear(in_features=1024, out_features=4096, bias=True)
+          (fc_out): Linear(in_features=4096, out_features=1024, bias=True)
+          (act): NewGELUActivation()
+          (dropout): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+    (ln_f): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+  )
+  (lm_head): Linear(in_features=1024, out_features=51200, bias=True)
+)>
+```
 - Memory Footprint:
 ```
 print("Footprint of the model in MBs: ", 
@@ -121,7 +153,7 @@ print("Footprint of the model in MBs: ",
 Footprint of the model in MBs:  797.310976
 ```
 
-- Output:
+- Text genereated:
 ```
 # the text generation piple to generate text
 pipe = pipeline("text-generation", model=model, tokenizer=tokenizer)
@@ -135,7 +167,51 @@ Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
 [{'generated_text': 'def hello_world():\n    print("Hello World")\n\n# hello_world()\n\n# def hello_'}]
 
 ```
-##### After Qunatization: 
+#### Quantizing
+- Replace linear with target and quantize model, TargetClass -> W8A16LinearLayer
+- We r not quant {lm_head} because the model is an autoregressive model.
+- As it uses the output from the previous iteration to get the output of the next iteration.
+```
+replace_linear_with_target_and_quantize(model,
+                                        W8A16LinearLayer, ["lm_head"])
+```
+##### After Quantization 
+
+
+
+- Parameters:
+```
+pipe.model.get_parameter
+```
+
+```
+<bound method Module.get_parameter of CodeGenForCausalLM(
+  (transformer): CodeGenModel(
+    (wte): Embedding(51200, 1024)
+    (drop): Dropout(p=0.0, inplace=False)
+    (h): ModuleList(
+      (0-19): 20 x CodeGenBlock(
+        (ln_1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (attn): CodeGenAttention(
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+          (resid_dropout): Dropout(p=0.0, inplace=False)
+          (qkv_proj): W8A16LinearLayer()
+          (out_proj): W8A16LinearLayer()
+        )
+        (mlp): CodeGenMLP(
+          (fc_in): W8A16LinearLayer()
+          (fc_out): W8A16LinearLayer()
+          (act): NewGELUActivation()
+          (dropout): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+    (ln_f): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+  )
+  (lm_head): Linear(in_features=1024, out_features=51200, bias=True)
+)>
+```
+
 
 - Memory Footprint:
 ```
@@ -148,17 +224,29 @@ Footprint of the quantized model in MBs:  546.021376
 ```
 
 
-- Output
-```
-Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
-def hello_world():
-    print("Hello World")
+- Text Generated:
+    - When asked to define a function hello_world:
+    ```
+    Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+    def hello_world():
+        print("Hello World")
 
-# hello_world()
+    # hello_world()
 
-# def hello_
-```
+    # def hello_
+    ```
+    - When asked to define a function which returns sun of 5 natural numbers:
+        ```
+        Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+        def sum_of_natural_numbers(5):
+            """Return sum of all numbers from 1 to 5."""
+            sum = 0
+            for i in range(1, 6):
+                sum += i
+            return sum
 
+        # print(sum_of_natural_numbers(5))
+        ```
 
 
 
