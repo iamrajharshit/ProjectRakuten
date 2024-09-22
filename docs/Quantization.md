@@ -40,10 +40,49 @@ Here, we train a student model, which is the target-compressed model using the o
 - This process can be computationally expensive due to the need to run both the teacher and student models simultaneously during training.
 
 ## Quantization
+![qunat](img\quant\diag\04_Quantiaztion.png)
+
 Quantization simply consists of repesenting model weights or activations in a low precision.
 
+- Idea it to store the parameters of the model in lower percision.
 
-![qunat](img\quant\diag\06_quant.jpg)
+- The challenge here, is to lower the quantization error.
 
 
-### Ty
+
+## Linear Qunatization
+
+
+### Applying Linear Quantization using Quanto
+
+
+
+
+## Quantization Granularity
+
+**Quantization granularity** refers to the level of detail at which a continuous value is represented in a discrete form. In the context of deep learning, it determines how finely the weights and activations of a neural network are quantized.
+
+### Types of Quantization Granularity
+
+1. **Per-Tensor Quantization:**
+    - A single scale and zero-point are used for all elements in a tensor.
+    - **Simplest** but may not be optimal for tensors with diverse distributions.
+2. **Per-Channel Quantization:**
+    - A separate scale and zero-point are used for each channel of a tensor.
+    - **More flexible** than per-tensor quantization, especially for tensors with diverse distributions along different channels.
+3. **Per-Group Quantization:**
+    - A group of elements within a tensor is quantized using a single scale and zero-point.
+    - **Intermediate** between per-tensor and per-channel quantization, offering a balance between accuracy and memory efficiency.
+
+
+## Papers on Quantization Methods
+- LLM.int8(): 8-bit Matrix Multiplication
+ for Transformers at Scale [arxiv.org](https://arxiv.org/pdf/2208.07339)
+    - Proposed a no-performance degradation 8-bit quanitzation method by decomposing the underlying maxtrix multiplication in two stages, the outlier part in float16 and the non-outlier part in int8.
+- QLORA:Efficient Finetuning of Quantized LLMs [arxiv.org](https://arxiv.org/pdf/2305.14314)
+    - Making LLMs more accessible by quantizing them in 4-bit percision and being able to fine-tune, low-rank adapters on top of the model.
+
+- SmoothQuant [arxiv.org](https://arxiv.org/pdf/2211.10438)
+    - Propsoed to per-calibrate the model so that the quantized model does not get affected by large activations caused by large models.
+
+
