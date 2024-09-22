@@ -1,9 +1,3 @@
-# Index
-|Sl no|Content||
-|---|---|---|
-|1|[Implementation of PSO on Custom Neural Network](#pso-implementation)||
-|2|[Using pyswarm and keras](#using-pyswarm-and-keras-to-optimize-neural-network-models)||
-
 ## PSO Implementation
 - Implementation of PSO on Custom Neural Network.
 - Removed Backpropagation and in-turn Gradient Descent and use Particle Swarm Optimization technique for Neural Network Training.
@@ -216,12 +210,8 @@ def tanh(x):
 ## Fitness Fuctions
 
 - [Loss](PSO\output\loss.csv) saved values over running on `Epoch=10`.
-## Refrence 
-- [Repo on PSO](https://github.com/piyush2896/PSO-for-Neural-Nets)
-- [GFG overview on PSO](https://www.geeksforgeeks.org/particle-swarm-optimization-pso-an-overview/)
 
-
-## Using pyswarm and keras to optimize neural network models
+# Using pyswarm and keras to optimize neural network models
 - The [NoteBook]() containing training NN using brest_cancer dataset and optimized using PSO
 
 ### pyswarm performance
@@ -233,3 +223,9 @@ def tanh(x):
 - Hyperparameter Visulization
 
 ![Hyper](img\pso\Optimal Hyper.png)
+
+## Refrence 
+- [Repo on PSO](https://github.com/piyush2896/PSO-for-Neural-Nets)
+- [GFG overview on PSO](https://www.geeksforgeeks.org/particle-swarm-optimization-pso-an-overview/)
+
+## Paper on Swarm Intelligence
