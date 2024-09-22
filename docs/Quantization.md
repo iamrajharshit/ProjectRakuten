@@ -109,9 +109,19 @@ model = AutoModelForCausalLM.from_pretrained(model_id,
                                     torch_dtype=torch.bfloat16,
                                              low_cpu_mem_usage=True)
 tokenizer = AutoTokenizer.from_pretrained(model_id)
+```
+##### Before Quantization
+- Memory Footprint:
+```
+print("Footprint of the model in MBs: ", 
+      model.get_memory_footprint()/1e+6)
 
 ```
+```
+Footprint of the model in MBs:  797.310976
+```
 
+- Output:
 ```
 # the text generation piple to generate text
 pipe = pipeline("text-generation", model=model, tokenizer=tokenizer)
@@ -120,15 +130,25 @@ pipe = pipeline("text-generation", model=model, tokenizer=tokenizer)
 print(pipe("def hello_world():", max_new_tokens=20, do_sample=False))
 
 ```
-
-- Output before Quantization:
 ```
 Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
 [{'generated_text': 'def hello_world():\n    print("Hello World")\n\n# hello_world()\n\n# def hello_'}]
 
 ```
+##### After Qunatization: 
 
-- Output after Qunatization: 
+- Memory Footprint:
+```
+print("Footprint of the quantized model in MBs: ", 
+      pipe.model.get_memory_footprint()/1e+6)
+
+```
+```
+Footprint of the quantized model in MBs:  546.021376
+```
+
+
+- Output
 ```
 Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
 def hello_world():
