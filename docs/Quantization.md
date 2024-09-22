@@ -37,8 +37,8 @@ Pruning simply consists of removing layers in a model that do not have much impo
 
 Here, we train a student model, which is the target-compressed model using the output from the teacher model in addition to the main loss term.
 
-- The challenge in knowledge distillation lies in ensuring that we have sufficient computational resources to load the original (teacher) model and generate its predictions.
-- These predictions are then passed to the student model, and during this process, the loss is computed based on the difference between the student’s output and the teacher’s output.
+- The challenge in knowledge distillation lies in ensuring that we have sufficient computational resources to load the original (instructor) model and generate its predictions.
+- These predictions are then passed to the (student) model, and during this process, the loss is computed based on the difference between the student’s output and the teacher’s output.
 - This process can be computationally expensive due to the need to run both the teacher and student models simultaneously during training.
 
 ## Quantization
