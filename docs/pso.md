@@ -51,7 +51,7 @@ def tanh(x):
 
 
 ## Training Accuracy
-<img src="\PSO\images\Figure_2.png">
+![Training Accuracy](img\pso\Figure_2.png)
 
 ## Fitness fuctions
 
