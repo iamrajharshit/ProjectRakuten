@@ -3,7 +3,7 @@ Quantization is a technique used in machine learning to reduce the size and comp
 
 ## Why Quantization came into picture?
 
-![SoomthQuant](img\quant\diag\01_SmoothQuant.png)
+![SoomthQuant](https://github.com/iamrajharshit/ProjectRakuten/blob/main/docs/img/quant/diag/01_SmoothQuant.png)
 Reference: [SmoothQuant:AccurateandEfficientPost-TrainingQuantizationforLargeLanguageModels](https://arxiv.org/pdf/2211.10438)
 
 Now a days, Deeplearning architecture are becoming larger and larger. In 2023-2024 largest most used models seems to be around ~70B parameters.
@@ -15,14 +15,14 @@ Now a days, Deeplearning architecture are becoming larger and larger. In 2023-20
 - Cunsumer-type hardware such as NVIDA T4 GPUs have only 16GB of RAM.
 
 ## Model Compression
-![Model Compression](img\quant\diag\00_Compression.jpg)
+![Model Compression](https://github.com/iamrajharshit/ProjectRakuten/blob/main/docs/img/quant/diag/00_Compression.jpg)
 
 Therefore the challenge is to make these state-of-the-art models accessible through model compression.
 
 ### State-of-the-art methods for model compression
 #### Pruning
 
-![Pruning](img\quant\diag\02_Pruning.png)
+![Pruning](https://github.com/iamrajharshit/ProjectRakuten/blob/main/docs/img/quant/diag/02_Pruning.png)
 
 Pruning simply consists of removing layers in a model that do not have much importance on the model's decisions. It consists of removing some layers bansed on some matrics like magnitudes of the weights.
 
@@ -31,7 +31,7 @@ Pruning simply consists of removing layers in a model that do not have much impo
 
 #### Knowledge Distillation
 
-![Knowledge Distillation](img\quant\diag\03_Knowledge Transfer.png)
+![Knowledge Distillation](https://github.com/iamrajharshit/ProjectRakuten/blob/main/docs/img/quant/diag/03_Knowledge%20Transfer.png)
 
 Here, we train a student model, which is the target-compressed model using the output from the teacher model in addition to the main loss term.
 
@@ -40,7 +40,7 @@ Here, we train a student model, which is the target-compressed model using the o
 - This process can be computationally expensive due to the need to run both the teacher and student models simultaneously during training.
 
 ## Quantization
-![qunat](img\quant\diag\04_Quantiaztion.png)
+![qunat](https://github.com/iamrajharshit/ProjectRakuten/blob/main/docs/img/quant/diag/04_Quantiaztion.png)
 
 Quantization simply consists of repesenting model weights or activations in a low precision.
 
