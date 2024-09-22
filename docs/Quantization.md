@@ -74,6 +74,8 @@ Quantization simply consists of repesenting model weights or activations in a lo
     - A group of elements within a tensor is quantized using a single scale and zero-point.
     - **Intermediate** between per-tensor and per-channel quantization, offering a balance between accuracy and memory efficiency.
 
+## 8-Bit Quantizer  
+
 
 ## Papers on Quantization Methods
 - LLM.int8(): 8-bit Matrix Multiplication
