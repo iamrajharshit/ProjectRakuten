@@ -49,9 +49,7 @@ Quantization simply consists of repesenting model weights or activations in a lo
 - The challenge here, is to lower the quantization error.
 
 
-
 ## Linear Qunatization
-
 
 ### Applying Linear Quantization using Quanto
 
