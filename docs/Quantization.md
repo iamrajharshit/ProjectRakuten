@@ -15,7 +15,8 @@ Now a days, Deeplearning architecture are becoming larger and larger. In 2023-20
 - Cunsumer-type hardware such as NVIDA T4 GPUs have only 16GB of RAM.
 
 ## Model Compression
-![Model Compression](https://github.com/iamrajharshit/ProjectRakuten/blob/main/docs/img/quant/diag/00_Compression.jpg)
+<!-- ![Model Compression](https://github.com/iamrajharshit/ProjectRakuten/blob/main/docs/img/quant/diag/00_Compression.jpg) -->
+<img src="https://github.com/iamrajharshit/ProjectRakuten/blob/main/docs/img/quant/diag/00_Compression.jpg" label="Model Compression">
 
 Therefore the challenge is to make these state-of-the-art models accessible through model compression.
 
