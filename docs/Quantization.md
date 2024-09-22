@@ -4,6 +4,7 @@ Quantization is a technique used in machine learning to reduce the size and comp
 ## Why Quantization came into picture?
 
 ![SoomthQuant](./img/quant/diag/01_SmoothQuant.png)
+
 Reference: [SmoothQuant:AccurateandEfficientPost-TrainingQuantizationforLargeLanguageModels](https://arxiv.org/pdf/2211.10438)
 
 Now a days, Deeplearning architecture are becoming larger and larger. In 2023-2024 largest most used models seems to be around ~70B parameters.
@@ -41,7 +42,7 @@ Here, we train a student model, which is the target-compressed model using the o
 - This process can be computationally expensive due to the need to run both the teacher and student models simultaneously during training.
 
 ## Quantization
-![qunat](./img/quant/diag/04_Quantiaztion.png)
+![qunat](./img/quant/diag/06_quant.jpg)
 
 Quantization simply consists of repesenting model weights or activations in a low precision.
 
