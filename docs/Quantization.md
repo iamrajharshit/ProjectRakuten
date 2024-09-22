@@ -76,6 +76,72 @@ Quantization simply consists of repesenting model weights or activations in a lo
 
 ## 8-Bit Quantizer  
 
+- Will quantize any model in `8-bit precision`.
+
+- This quantizer is modality agnostic, meaning we can apply it on any model like vision, audio, text and even multi model.
+
+- Will use Per-Channel Linear Quantization.
+
+- Will create a `W8A16LinearLayer` class to store 8-bit weights and scales.
+
+- Will replace all `torch.nn.Linear` layers with `W8A16LinearLayer`
+
+- Then will build a quantizer and quantize a model end to end.
+
+- Last but not the least will test the naive absmax quantization on many scenario and study its impact.
+
+
+### Applying 8-Bit Quantization
+
+#### Using [Salesforce/codegen-350M-mono](https://huggingface.co/Salesforce/codegen-350M-mono) model from hugging face.
+
+- So this is a LM that has been fine-tuned in code.
+- And it has only 350million parameters.
+- Lets use transformers to load the model with tokenizer nd get some generation.
+
+
+```
+from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+
+model_id = "Salesforce/codegen-350M-mono"
+
+model = AutoModelForCausalLM.from_pretrained(model_id,
+                                    torch_dtype=torch.bfloat16,
+                                             low_cpu_mem_usage=True)
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+
+```
+
+```
+# the text generation piple to generate text
+pipe = pipeline("text-generation", model=model, tokenizer=tokenizer)
+
+# lets seee, as it is a model trainned and fine tuend on code, lets ask the model to complete code.
+print(pipe("def hello_world():", max_new_tokens=20, do_sample=False))
+
+```
+
+- Output before Quantization:
+```
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+[{'generated_text': 'def hello_world():\n    print("Hello World")\n\n# hello_world()\n\n# def hello_'}]
+
+```
+
+- Output after Qunatization: 
+```
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+def hello_world():
+    print("Hello World")
+
+# hello_world()
+
+# def hello_
+```
+
+
+
+
 
 ## Papers on Quantization Methods
 - LLM.int8(): 8-bit Matrix Multiplication
