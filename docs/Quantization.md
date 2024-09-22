@@ -98,7 +98,7 @@ Quantization simply consists of repesenting model weights or activations in a lo
 - So this is a LM that has been fine-tuned in code.
 - And it has only 350million parameters.
 - Lets use transformers to load the model with tokenizer nd get some generation.
-
+- For complete code refer the [notebook](https://github.com/iamrajharshit/ProjectRakuten/blob/main/Quantization/08_Custom%20Quantizer.ipynb).
 
 ```
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
