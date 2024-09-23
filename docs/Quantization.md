@@ -262,6 +262,7 @@ Footprint of the quantized model in MBs:  546.021376
 
 ## Open source methods
 These methods are designed to make LLMs smaller and faster, while minimizing performance degradation.
+
 - QuIP: 2-Bit Quantization of
  Large Language Models 
   - [arxiv.org](https://arxiv.org/abs/2307.13304)
