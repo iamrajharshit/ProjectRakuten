@@ -253,7 +253,7 @@ Footprint of the quantized model in MBs:  546.021376
 
 - This model has 0.209729 million parameters.
 
-- For complete code implementation refer the [notebook](https://github.com/iamrajharshit/ProjectRakuten/blob/main/Quantization/09_Quantizing%20BiGram%Model.ipynb).
+- For complete code implementation refer the [notebook](https://github.com/iamrajharshit/ProjectRakuten/blob/main/Quantization/09_Quantizing%20BiGram%20Model.ipynb).
 
 ```
 import torch
@@ -537,6 +537,9 @@ HAST
 
 
 #### 2.2M param Model
+- This model has 2.2 million parameters.
+
+- For complete code implementation refer the [notebook](https://github.com/iamrajharshit/ProjectRakuten/blob/main/Quantization/10_Quantizing%202.2M%20param%20Model.ipynb).
 
 
 ##### Before Quantization 
