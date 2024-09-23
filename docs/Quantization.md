@@ -1,7 +1,7 @@
 # Introduction
 Quantization is a technique used in machine learning to reduce the size and computational requirements of a model by representing its parameters and operations with lower-precision.
 
-## Why Quantization came into picture?
+## Why Quantization?
 
 ![SoomthQuant](./img/quant/diag/01_SmoothQuant.png)
 
