@@ -86,9 +86,9 @@ Quantization simply consists of repesenting model weights or activations in a lo
 
 - Will replace all `torch.nn.Linear` layers with `W8A16LinearLayer`
 
-- Then will build a quantizer and quantize a model end to end.
+<!-- - Then will build a quantizer and quantize a model end to end.
 
-- Last but not the least will test the naive absmax quantization on many scenario and study its impact.
+- Last but not the least will test the naive absmax quantization on many scenario and study its impact. -->
 
 
 ### Applying 8-Bit Quantization
