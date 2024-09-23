@@ -247,7 +247,353 @@ Footprint of the quantized model in MBs:  546.021376
         # print(sum_of_natural_numbers(5))
         ```
 
+#### Bigram Language Model
 
+- This is a simple transformer-based Bigram Language Model
+
+- This model has 0.209729 million parameters.
+
+- For complete code implementation refer the [notebook](https://github.com/iamrajharshit/ProjectRakuten/blob/main/Quantization/09_Quantizing%20BigramLanguageModel.ipynb).
+
+```
+import torch
+
+model_path = "/content/drive/MyDrive/Rakuten/GPT/model/bigram_model.pth"
+
+# Load the model
+model = BigramLanguageModel()
+model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
+
+```
+##### Before Quantization
+
+- Model:
+```
+    (0): Linear(in_features=384, out_features=1536, bias=True)
+          (1): ReLU()
+          (2): Linear(in_features=1536, out_features=384, bias=True)
+          (3): Dropout(p=0.0, inplace=False)
+        )
+      )
+...
+    )
+  )
+  (ln_f): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+  (lm_head): Linear(in_features=384, out_features=65, bias=True)
+)
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+<All keys matched successfully>
+BigramLanguageModel(
+  (token_embedding_table): Embedding(65, 384)
+  (position_embedding_table): Embedding(32, 384)
+  (blocks): Sequential(
+    (0): Block(
+      (sa): MultiHeadAttention(
+        (heads): ModuleList(
+          (0-5): 6 x Head(
+            (key): Linear(in_features=384, out_features=64, bias=False)
+            (query): Linear(in_features=384, out_features=64, bias=False)
+            (value): Linear(in_features=384, out_features=64, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (proj): Linear(in_features=384, out_features=384, bias=True)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+      (ffwd): FeedFoward(
+        (net): Sequential(
+          (0): Linear(in_features=384, out_features=1536, bias=True)
+          (1): ReLU()
+          (2): Linear(in_features=1536, out_features=384, bias=True)
+          (3): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (ln1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (ln2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+    )
+    (1): Block(
+      (sa): MultiHeadAttention(
+        (heads): ModuleList(
+          (0-5): 6 x Head(
+            (key): Linear(in_features=384, out_features=64, bias=False)
+            (query): Linear(in_features=384, out_features=64, bias=False)
+            (value): Linear(in_features=384, out_features=64, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (proj): Linear(in_features=384, out_features=384, bias=True)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+      (ffwd): FeedFoward(
+        (net): Sequential(
+          (0): Linear(in_features=384, out_features=1536, bias=True)
+          (1): ReLU()
+          (2): Linear(in_features=1536, out_features=384, bias=True)
+          (3): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (ln1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (ln2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+    )
+    (2): Block(
+      (sa): MultiHeadAttention(
+        (heads): ModuleList(
+          (0-5): 6 x Head(
+            (key): Linear(in_features=384, out_features=64, bias=False)
+            (query): Linear(in_features=384, out_features=64, bias=False)
+            (value): Linear(in_features=384, out_features=64, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (proj): Linear(in_features=384, out_features=384, bias=True)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+      (ffwd): FeedFoward(
+        (net): Sequential(
+          (0): Linear(in_features=384, out_features=1536, bias=True)
+          (1): ReLU()
+          (2): Linear(in_features=1536, out_features=384, bias=True)
+          (3): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (ln1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (ln2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+    )
+    (3): Block(
+      (sa): MultiHeadAttention(
+        (heads): ModuleList(
+          (0-5): 6 x Head(
+            (key): Linear(in_features=384, out_features=64, bias=False)
+            (query): Linear(in_features=384, out_features=64, bias=False)
+            (value): Linear(in_features=384, out_features=64, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (proj): Linear(in_features=384, out_features=384, bias=True)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+      (ffwd): FeedFoward(
+        (net): Sequential(
+          (0): Linear(in_features=384, out_features=1536, bias=True)
+          (1): ReLU()
+          (2): Linear(in_features=1536, out_features=384, bias=True)
+          (3): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (ln1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (ln2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+    )
+    (4): Block(
+      (sa): MultiHeadAttention(
+        (heads): ModuleList(
+          (0-5): 6 x Head(
+            (key): Linear(in_features=384, out_features=64, bias=False)
+            (query): Linear(in_features=384, out_features=64, bias=False)
+            (value): Linear(in_features=384, out_features=64, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (proj): Linear(in_features=384, out_features=384, bias=True)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+      (ffwd): FeedFoward(
+        (net): Sequential(
+          (0): Linear(in_features=384, out_features=1536, bias=True)
+          (1): ReLU()
+          (2): Linear(in_features=1536, out_features=384, bias=True)
+          (3): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (ln1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (ln2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+    )
+    (5): Block(
+      (sa): MultiHeadAttention(
+        (heads): ModuleList(
+          (0-5): 6 x Head(
+            (key): Linear(in_features=384, out_features=64, bias=False)
+            (query): Linear(in_features=384, out_features=64, bias=False)
+            (value): Linear(in_features=384, out_features=64, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (proj): Linear(in_features=384, out_features=384, bias=True)
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+      (ffwd): FeedFoward(
+        (net): Sequential(
+          (0): Linear(in_features=384, out_features=1536, bias=True)
+          (1): ReLU()
+          (2): Linear(in_features=1536, out_features=384, bias=True)
+          (3): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (ln1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (ln2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+    )
+  )
+  (ln_f): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+  (lm_head): Linear(in_features=384, out_features=65, bias=True)
+)
+
+```
+##### After Quantization
+- Model:
+```
+BigramLanguageModel(
+  (token_embedding_table): Embedding(65, 384)
+  (position_embedding_table): Embedding(32, 384)
+  (blocks): Sequential(
+    (0): Block(
+      (sa): MultiHeadAttention(
+        (heads): ModuleList(
+          (0-5): 6 x Head(
+            (key): W8A16LinearLayer()
+            (query): W8A16LinearLayer()
+            (value): W8A16LinearLayer()
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (proj): W8A16LinearLayer()
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+      (ffwd): FeedFoward(
+        (net): Sequential(
+          (0): W8A16LinearLayer()
+          (1): ReLU()
+          (2): W8A16LinearLayer()
+          (3): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (ln1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (ln2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+    )
+    (1): Block(
+      (sa): MultiHeadAttention(
+        (heads): ModuleList(
+          (0-5): 6 x Head(
+            (key): W8A16LinearLayer()
+            (query): W8A16LinearLayer()
+            (value): W8A16LinearLayer()
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (proj): W8A16LinearLayer()
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+      (ffwd): FeedFoward(
+        (net): Sequential(
+          (0): W8A16LinearLayer()
+          (1): ReLU()
+          (2): W8A16LinearLayer()
+          (3): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (ln1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (ln2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+    )
+    (2): Block(
+      (sa): MultiHeadAttention(
+        (heads): ModuleList(
+          (0-5): 6 x Head(
+            (key): W8A16LinearLayer()
+            (query): W8A16LinearLayer()
+            (value): W8A16LinearLayer()
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (proj): W8A16LinearLayer()
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+      (ffwd): FeedFoward(
+        (net): Sequential(
+          (0): W8A16LinearLayer()
+          (1): ReLU()
+          (2): W8A16LinearLayer()
+          (3): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (ln1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (ln2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+    )
+    (3): Block(
+      (sa): MultiHeadAttention(
+        (heads): ModuleList(
+          (0-5): 6 x Head(
+            (key): W8A16LinearLayer()
+            (query): W8A16LinearLayer()
+            (value): W8A16LinearLayer()
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (proj): W8A16LinearLayer()
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+      (ffwd): FeedFoward(
+        (net): Sequential(
+          (0): W8A16LinearLayer()
+          (1): ReLU()
+          (2): W8A16LinearLayer()
+          (3): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (ln1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (ln2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+    )
+    (4): Block(
+      (sa): MultiHeadAttention(
+        (heads): ModuleList(
+          (0-5): 6 x Head(
+            (key): W8A16LinearLayer()
+            (query): W8A16LinearLayer()
+            (value): W8A16LinearLayer()
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (proj): W8A16LinearLayer()
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+      (ffwd): FeedFoward(
+        (net): Sequential(
+          (0): W8A16LinearLayer()
+          (1): ReLU()
+          (2): W8A16LinearLayer()
+          (3): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (ln1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (ln2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+    )
+    (5): Block(
+      (sa): MultiHeadAttention(
+        (heads): ModuleList(
+          (0-5): 6 x Head(
+            (key): W8A16LinearLayer()
+            (query): W8A16LinearLayer()
+            (value): W8A16LinearLayer()
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (proj): W8A16LinearLayer()
+        (dropout): Dropout(p=0.0, inplace=False)
+      )
+      (ffwd): FeedFoward(
+        (net): Sequential(
+          (0): W8A16LinearLayer()
+          (1): ReLU()
+          (2): W8A16LinearLayer()
+          (3): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (ln1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (ln2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+    )
+  )
+  (ln_f): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+  (lm_head): Linear(in_features=384, out_features=65, bias=True)
+)
+
+```
 
 
 ## Papers on Quantization Methods
