@@ -437,6 +437,8 @@ BigramLanguageModel(
 )
 
 ```
+- Model size: 42,028KB
+
 ##### After Quantization
 - Model:
 ```
@@ -594,7 +596,7 @@ BigramLanguageModel(
 )
 
 ```
-
+- Model size: 11,047KB
 
 ## Papers on Quantization Methods
 - LLM.int8(): 8-bit Matrix Multiplication
