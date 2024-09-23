@@ -265,8 +265,8 @@ These methods are designed to make LLMs smaller and faster, while minimizing per
 
 - QuIP: 2-Bit Quantization of
  Large Language Models 
-  - [arxiv.org](https://arxiv.org/abs/2307.13304)
-- AQLM:Extreme Compression of Large Language Models via Additive Quantization 
-  - [arxiv.org](https://arxiv.org/pdf/2401.06118) 
-  - [GitHub Repo](https://github.com/vahe1994/AQLM)
+    - Research Paper @[arxiv.org](https://arxiv.org/abs/2307.13304)
+- AQLM:Extreme Compression of Large Language Models via Additive Quantization  
+    - Research Paper @[arxiv.org](https://arxiv.org/pdf/2401.06118) 
+    - [GitHub Repository](https://github.com/vahe1994/AQLM)
 
