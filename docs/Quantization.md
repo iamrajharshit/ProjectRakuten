@@ -260,4 +260,12 @@ Footprint of the quantized model in MBs:  546.021376
 - SmoothQuant [arxiv.org](https://arxiv.org/pdf/2211.10438)
     - Propsoed to per-calibrate the model so that the quantized model does not get affected by large activations caused by large models.
 
+## Open source methods
+These methods are designed to make LLMs smaller and faster, while minimizing performance degradation.
+- QuIP: 2-Bit Quantization of
+ Large Language Models 
+  - [arxiv.org](https://arxiv.org/abs/2307.13304)
+- AQLM:Extreme Compression of Large Language Models via Additive Quantization 
+  - [arxiv.org](https://arxiv.org/pdf/2401.06118) 
+  - [GitHub Repo](https://github.com/vahe1994/AQLM)
 
