@@ -501,7 +501,7 @@ BigramLanguageModel(
 Model size: 0.31 MB
 ```
 
-- Quantized Model Generation `max_new_tokens=100` :
+- Quantized Model Generation `max_new_tokens=100`:
 ```
 Wilt to thy bodve all's palt
 Than maked my segvereign ROMBELIZABETH:
