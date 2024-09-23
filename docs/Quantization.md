@@ -95,9 +95,9 @@ Quantization simply consists of repesenting model weights or activations in a lo
 
 #### Using [Salesforce/codegen-350M-mono](https://huggingface.co/Salesforce/codegen-350M-mono) model from hugging face.
 
-- So this is a LM that has been fine-tuned in code.
+- So this is a Language MOdel that has been fine-tuned in code.
 - And it has only 350million parameters.
-- Lets use transformers to load the model with tokenizer nd get some generation.
+- Lets use transformers to load the model with tokenizer and get some generation.
 - For complete code refer the [notebook](https://github.com/iamrajharshit/ProjectRakuten/blob/main/Quantization/08_Custom%20Quantizer.ipynb).
 
 ```
