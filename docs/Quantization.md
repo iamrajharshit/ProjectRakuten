@@ -48,6 +48,8 @@ Quantization simply consists of repesenting model weights or activations in a lo
 
 - Idea it to store the parameters of the model in lower percision.
 
+- For example: `FP32` Range(-234,251)  -> `INT8` Range(-128,127)
+
 - The challenge here, is to lower the quantization error.
 
 
@@ -55,6 +57,7 @@ Quantization simply consists of repesenting model weights or activations in a lo
 
 ### Applying Linear Quantization using Quanto
 Performing 8-Bit Precision using `Quanto` library.
+
 - Check out the complete implementation in the [notebook](https://github.com/iamrajharshit/ProjectRakuten/blob/main/Quantization/02_T5%20FLAN%20Linear-quantization.ipynb).
 
 #### T5-FLAN Model
