@@ -268,30 +268,6 @@ model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
 
 - model:
 ```
-hvision 0.19.1+cu121 requires torch==2.4.1, but you have torch 2.1.1 which is incompatible.
-xarray 2024.9.0 requires numpy>=1.24, but you have numpy 1.23.5 which is incompatible.
-Successfully installed Pillow-9.4.0 accelerate-0.26.1 huggingface-hub-0.17.3 numpy-1.23.5 nvidia-cublas-cu12-12.1.3.1 nvidia-cuda-cupti-cu12-12.1.105 nvidia-cuda-nvrtc-cu12-12.1.105 nvidia-cuda-runtime-cu12-12.1.105 nvidia-cudnn-cu12-8.9.2.26 nvidia-cufft-cu12-11.0.2.54 nvidia-curand-cu12-10.3.2.106 nvidia-cusolver-cu12-11.4.5.107 nvidia-cusparse-cu12-12.1.0.106 nvidia-nccl-cu12-2.18.1 nvidia-nvjitlink-cu12-12.6.68 nvidia-nvtx-cu12-12.1.105 quanto-0.0.11 sentencepiece-0.2.0 tokenizers-0.14.1 torch-2.1.1 transformers-4.35.0 triton-2.1.0
-Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
-No renderer could be found for mimetype "application/vnd.colab-display-data+json", but one might be available on the Marketplace.
-
-Search Marketplace
---2024-09-23 13:55:34--  https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 1115394 (1.1M) [text/plain]
-Saving to: ‘input.txt’
-
-
-input.txt             0%[                    ]       0  --.-KB/s               
-input.txt           100%[===================>]   1.06M  --.-KB/s    in 0.01s   
-
-2024-09-23 13:55:34 (91.5 MB/s) - ‘input.txt’ saved [1115394/1115394]
-
-Mounted at /content/drive
-<ipython-input-12-d0c644f0e679>:7: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
-  model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
-<All keys matched successfully>
 BigramLanguageModel(
   (token_embedding_table): Embedding(65, 64)
   (position_embedding_table): Embedding(32, 64)
