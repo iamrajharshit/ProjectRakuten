@@ -203,13 +203,13 @@ def tanh(x):
 
 ## Training Accuracy
 
-![Train](img\pso\on mnist dataset.png)
+![Train](./img/pso/on mnist dataset.png)
 
-![Training Accuracy](img\pso\Figure_2.png)
+![Training Accuracy](./img/pso/Figure_2.png)
 
 ## Fitness Fuctions
 
-- [Loss](PSO\output\loss.csv) saved values over running on `Epoch=10`.
+- [Loss](PSO/output/loss.csv) saved values over running on `Epoch=10`.
 
 # Using pyswarm and keras to optimize neural network models
 - The [NoteBook]() containing training NN using brest_cancer dataset and optimized using PSO
@@ -218,11 +218,11 @@ def tanh(x):
 
 - Model Performance
 
-![Performance](img\pso\Model Performance Metrics.png)
+![Performance](./img/pso/Model Performance Metrics.png)
 
 - Hyperparameter Visulization
 
-![Hyper](img\pso\Optimal Hyper.png)
+![Hyper](./img/pso/Optimal Hyper.png)
 
 ## Refrence 
 - [Repo on PSO](https://github.com/piyush2896/PSO-for-Neural-Nets)
