@@ -846,12 +846,12 @@ Model size: 2.88 MB
 
 ## Papers on Quantization Methods
 - LLM.int8(): 8-bit Matrix Multiplication
- for Transformers at Scale [arxiv.org](https://arxiv.org/pdf/2208.07339)
+ for Transformers at Scale @[arxiv.org](https://arxiv.org/pdf/2208.07339)
     - Proposed a no-performance degradation 8-bit quanitzation method by decomposing the underlying maxtrix multiplication in two stages, the outlier part in float16 and the non-outlier part in int8.
-- QLORA:Efficient Finetuning of Quantized LLMs [arxiv.org](https://arxiv.org/pdf/2305.14314)
+- QLORA:Efficient Finetuning of Quantized LLMs @[arxiv.org](https://arxiv.org/pdf/2305.14314)
     - Making LLMs more accessible by quantizing them in 4-bit percision and being able to fine-tune, low-rank adapters on top of the model.
 
-- SmoothQuant [arxiv.org](https://arxiv.org/pdf/2211.10438)
+- SmoothQuant @[arxiv.org](https://arxiv.org/pdf/2211.10438)
     - Propsoed to per-calibrate the model so that the quantized model does not get affected by large activations caused by large models.
 
 ## Open source methods
