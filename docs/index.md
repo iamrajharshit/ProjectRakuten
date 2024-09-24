@@ -13,7 +13,7 @@
     - Implemented 8-bit Modality Agnostic Quantizer.
     - Read [Quantization](./Quantization.md) Doc for more.
 
-3. Implemented characterwise GPT model to understand the GPT structure.
+3. Implemented character-wise GPT model to understand the GPT structure.
     - Read [GPT Implementation](./gpt.md) Doc for more.
     - Qunatized the Implemented GPT model.
 
