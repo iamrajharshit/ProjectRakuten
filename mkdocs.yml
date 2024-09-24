@@ -9,8 +9,6 @@ nav:
     - Quantization Granularity: 02_QuantizationGranularity.md
     - Bigram Model Quantization: 03_BigramQunatization.md
     - 2.6M Param Model Quantization: 04_2MParMQuantization.md
-
-
   - GPT:
     - Introduction to GPT: 00_GPTintro.md
     - Training GPT: 01_GPTtraining.md
