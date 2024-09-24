@@ -985,4 +985,5 @@ These methods are designed to make LLMs smaller and faster, while minimizing per
     - [GitHub Repository](https://github.com/vahe1994/AQLM)
 
 [GPT Page ->](gpt.md)
+<br>
 [<- PSO Page](pso.md)
