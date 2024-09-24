@@ -231,6 +231,7 @@ AUC: 0.998689813298395
 ```
 
 #### With PSO
+
 - Loss: 
 ```
 Validation loss: 0.06511683017015457
@@ -245,9 +246,9 @@ F1-score: 0.979020979020979
 AUC: 0.9963969865705864
 ```
 
-- Hyperparameter Visulization
+<!-- - Hyperparameter Visulization
 
-![Hyper](./img/pso/Optimal Hyper.png)
+![Hyper](./img/pso/Optimal Hyper.png) -->
 
 ## Refrence 
 - [Repo on PSO](https://github.com/piyush2896/PSO-for-Neural-Nets)
