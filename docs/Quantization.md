@@ -62,6 +62,7 @@ Performing 8-Bit Precision using `Quanto` library.
 
 #### T5-FLAN Model
 We will use [google/flan-t5-small](https://huggingface.co/google/flan-t5-small) from Hugging face.
+
 - It is a non fine-tuned small language model.
 - It has 80M Parameters model. 
 
