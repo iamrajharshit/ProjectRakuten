@@ -217,7 +217,10 @@ def tanh(x):
 ### pyswarm performance
 
 - Model Performance
+- Without PSO:
+![Performance](./img/pso/no%20pso.png)
 
+-With PSO:
 ![Performance](./img/pso/Model Performance Metrics.png)
 
 - Hyperparameter Visulization
