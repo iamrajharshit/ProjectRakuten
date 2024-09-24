@@ -12,8 +12,8 @@ nav:
 
 
   - GPT:
-    - Introduction to GPT: 00_GPTIntro.md
-    - Training GPT: 01_GPTTraining.md
+    - Introduction to GPT: 00_GPTintro.md
+    - Training GPT: 01_GPTtraining.md
   - Finetuning: 
     - Finetuning Intro: finetuning.md
     - GPT2: Finetuning GPT2.md

@@ -96,4 +96,4 @@ Model size: 10.43 MB
 
 # [Finetuning Page ->](finetuning.md)
 
-## [<- Introduction to GPT](00_GPTIntro.md)
+## [<- Introduction to GPT](00_GPTintro.md)
