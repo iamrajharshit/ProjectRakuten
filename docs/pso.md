@@ -83,7 +83,6 @@ class Layer:
 ```
 
 - Model
-
 ```
 class Model:
 
