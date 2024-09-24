@@ -208,7 +208,7 @@ def tanh(x):
 
 ## Fitness Fuctions
 
-- [Loss](PSO/output/loss.csv) saved values over running on `Epoch=10`.
+- [Loss](https://github.com/iamrajharshit/ProjectRakuten/blob/main/PSO/output/loss.csv) saved values over running on `Epoch=10`.
 
 # Using pyswarm and keras to optimize neural network models
 - The [NoteBook]() containing training NN using brest_cancer dataset and optimized using PSO
