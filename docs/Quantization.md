@@ -985,7 +985,7 @@ These methods are designed to make LLMs smaller and faster, while minimizing per
     - Research Paper @[arxiv.org](https://arxiv.org/pdf/2401.06118) 
     - [GitHub Repository](https://github.com/vahe1994/AQLM)
 
-# [GPT Page ->](gpt.md)
+# [Introduction To GPT Page ->](00_GPTIntro.md)
 
-
+<!-- # [Linear Quantization ->](01_LinearQuantization.md) -->
 ## [<- PSO Page](pso.md)

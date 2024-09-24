@@ -48,6 +48,6 @@ Transformer based language model, which is a character level language model.
 
 
 
-# [Training The GPT Model ->](01_GptTraining.md)
+# [Training The GPT Model ->](01_GPTTraining.md)
 
 ## [<- Quantization Page](Quantization.md)

@@ -14,7 +14,7 @@
     - Read [Quantization](./Quantization.md) Doc for more.
 
 3. Implemented character-wise GPT model to understand the GPT structure.
-    - Read [GPT Implementation](./gpt.md) Doc for more.
+    - Read [GPT Implementation](./00_GPTIntro.md) Doc for more.
     - Qunatized the Implemented GPT model.
 
 4. Working on Finetuning the LLMs.

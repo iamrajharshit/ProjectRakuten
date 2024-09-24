@@ -5,8 +5,8 @@ nav:
   - PSO: pso.md
   - Quantization: Quantization.md
   - GPT:
-    - Introduction to GPT: 00_gptIntro.md
-    - Training GPT: 01_GptTraining.md
+    - Introduction to GPT: 00_GPTIntro.md
+    - Training GPT: 01_GPTTraining.md
   - Finetuning: 
     - Finetuning Intro: finetuning.md
     - GPT2: Finetuning GPT2.md

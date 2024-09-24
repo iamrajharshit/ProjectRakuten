@@ -108,4 +108,4 @@ Input: `What is the capital of India?` -> `Base LLM` -> Output: `What is the cap
 
 # [Finetuning GPT2 Page->](Finetuning%20GPT2.md)
 
-## [<- Training The GPT Model](01_GptTraining.md)
+## [<- Training The GPT Model](01_GPTTraining.md)
