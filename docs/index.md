@@ -5,20 +5,25 @@
 
 ![workflow](./img/home/00_Architecture.png)
 
-- Started with PSO implementation for weights extraction. But failed to implement it.
-    - [PSO Implementation](./pso.md)
+1. Started with PSO implementation for weights extraction. But failed to implement it.
+    - [PSO Implementation](./pso.md) Doc.
 
-- Following Bottom Up approach, started with working on Quantiation of models and LLMs.
+2. Following Bottom Up approach, started with working on Quantiation of models and LLMs.
     - Quantized open source models using open source methods.
     - Implemented 8-bit Modality Agnostic Quantizer.
     - Read [Quantization](./Quantization.md) Doc for more.
 
-- Implemented characterwise GPT model to understand the GPT structure.
+3. Implemented characterwise GPT model to understand the GPT structure.
     - Read [GPT Implementation](./gpt.md) Doc for more.
     - Qunatized the Implemented GPT model.
 
-- Working on Finetuning the LLM models
+4. Working on Finetuning the LLMs.
     - [Fine-tuning](./finetuning.md) Documentation.
+
+## Future work
+- Learn and implement Federated learning.
+- Quantize and Finetune Llama Model.
+
 
 
 
