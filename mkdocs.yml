@@ -5,7 +5,9 @@ nav:
   - PSO: pso.md
   - Quantization: Quantization.md
   - GPT: gpt.md
-  - Finetuning: finetuning.md
+  - Finetuning: 
+    - Finetuning Intro: finetuning.md
+    - GPT2: Finetuning GPT2.md
   
 
 theme:

@@ -91,7 +91,7 @@ Input: `What is the capital of India?` -> `Base LLM` -> Output: `What is the cap
  4. Get ~1000 inputs and outputs pair for the task, better than the ~OK from the LLM. 
  5. Finetune a small LLM on this data
 
-### 
+<!-- ### 
 ## Data Preparation
 
 
@@ -104,11 +104,12 @@ Input: `What is the capital of India?` -> `Base LLM` -> Output: `What is the cap
 
 ## Takeaways
 
-## Papers on Finetuning
+## Papers on Finetuning -->
+
+[Finetuning GPT2 Page->](Finetuning%20GPT2.md)
 
 
-[Home ->](index.md)
+
 <br>
 
-[<- GPT](gpt.md)
-
+[<- Go to GPT](gpt.md)
