@@ -114,4 +114,4 @@ Model size: 10.43 MB
 
 [Finetuning Page ->](finetuning.md)
 <br>
-[<- GPT Page](gpt.md)
+[<- Quantization Page](Quantization.md)
