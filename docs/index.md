@@ -10,8 +10,8 @@
 
 
 - [PSO Implementation](./pso.md)
-- [Qunatization Implimentation](Quantization.md)
-- [GPT Implimentation](./gpt.md)
+- [Qunatization Implementation](Quantization.md)
+- [GPT Implementation](./gpt.md)
 - [Fine-tuning model](./finetuning.md)
 
 
