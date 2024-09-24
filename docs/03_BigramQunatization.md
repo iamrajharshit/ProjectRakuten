@@ -261,5 +261,5 @@ Wt slavefpore of me tout.
 HAST
 
 ```
-# [2.6M param Model Quantization ->](04_2.6MParMQuantization.md)
+# [2.6M param Model Quantization ->](04_2MParMQuantization.md)
 ## [<- Quantization Granularity](02_QuantizationGranularity.md)

@@ -8,7 +8,7 @@ nav:
     - Linear Quantization: 01_LinearQuantization.md
     - Quantization Granularity: 02_QuantizationGranularity.md
     - Bigram Model Quantization: 03_BigramQunatization.md
-    - 2.6M Param Model Quantization: 04_2.6MParMQuantization.md
+    - 2.6M Param Model Quantization: 04_2MParMQuantization.md
 
 
   - GPT:
