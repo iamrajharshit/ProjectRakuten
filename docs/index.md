@@ -1,6 +1,12 @@
-# Rakuten Project
+# Gen AI on Edge Devices EdgeBee-Swarm Intelligence
 
-## Different Phases:
+
+## Workflow Architecture
+
+![workflow](./img/home/00_Architecture.png)
+
+
+## Different Implimentation Phases:
 
 
 - [PSO Implementation](./pso.md)
