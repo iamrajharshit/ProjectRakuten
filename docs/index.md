@@ -22,6 +22,7 @@
 
 ## Future work
 - Learn and implement Federated learning.
+- Try implementing 2-Bit Quanrize for Edge Devices.
 - Quantize and Finetune Llama Model.
 
 
