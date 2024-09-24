@@ -3,7 +3,14 @@ site_name: Rakuten Docs
 nav:
   - Approach: index.md
   - PSO: pso.md
-  - Quantization: Quantization.md
+  - Quantization:
+    - Introduction to Quantization: Quantization.md
+    - Linear Quantization: 01_LinearQuantization.md
+    - Quantization Granularity: 02_QuantizationGranularity.md
+    - Bigram Model Quantization: 03_BigramQunatization.md
+    - 2.6M Param Model Quantization: 04_2.6MParMQuantization.md
+
+
   - GPT:
     - Introduction to GPT: 00_GPTIntro.md
     - Training GPT: 01_GPTTraining.md
