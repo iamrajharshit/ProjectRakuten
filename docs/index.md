@@ -9,7 +9,7 @@
     - [PSO Implementation](./pso.md) Doc.
 
 2. Following Bottom Up approach, started with working on Quantiation of models and LLMs.
-    - Quantized open source models using open source methods.
+    - Quantized HuggingFace models using Qunto Library.
     - Implemented 8-bit Modality Agnostic Quantizer.
     - Read [Quantization](./Quantization.md) Doc for more.
 
