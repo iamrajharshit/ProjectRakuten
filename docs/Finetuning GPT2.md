@@ -282,7 +282,6 @@ Build the next Saturday morning (after a long walk) by 20 minutes. Avoid injury 
 - [LoRA Research Paper](https://arxiv.org/pdf/2106.09685)
 
 
-[Go to Approach ->](index.md)
-<br>
+# [Go to Approach ->](index.md)
 
-[<- Go to Fintuning Intro](finetuning.md)
+## [<- Go to Fintuning Intro](finetuning.md)

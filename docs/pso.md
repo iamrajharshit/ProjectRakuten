@@ -258,7 +258,7 @@ AUC: 0.9963969865705864
 - Distributed Swarm Learning for Edge Internet of Things @[Paper](https://drive.google.com/file/d/1qI42V4dU5mmAXTAdW07uo6CBUu0t3d2r/view)
 
 
-[Quantization Page ->](Quantization.md)
-<br>
+# [Quantization Page ->](Quantization.md)
 
-[<- Approach](index.md)
+
+## [<- Approach](index.md)
