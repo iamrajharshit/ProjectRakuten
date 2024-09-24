@@ -8,7 +8,7 @@
 1. The implementation of Particle Swarm Optimization (PSO) for weight extraction was initiated but could not be successfully completed.
     - [PSO Implementation](./pso.md) Doc.
 
-2. Following a bottom-up approach, work began on the quantization of the model.
+2. Following a bottom-up approach, started working on the quantization of the model.
     - Quantized HuggingFace models, using Quanto Library.
     - Implemented 8-bit Modality Agnostic Quantizer.
     - Read [Quantization](./Quantization.md) Doc for more.
