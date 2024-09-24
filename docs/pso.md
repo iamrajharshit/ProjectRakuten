@@ -215,13 +215,35 @@ def tanh(x):
 - The [NoteBook]() containing training NN using brest_cancer dataset and optimized using PSO
 
 ### pyswarm performance
-
-- Model Performance
-- Without PSO:
+#### Without PSO:
+- Loss:
+```
+Validation loss: 0.06128723919391632
+```
+- Performance Metrics:
 ![Performance](./img/pso/no%20pso.png)
+```
+Accuracy: 0.9736842105263158
+Precision: 0.9857142857142858
+Recall: 0.971830985915493
+F1-score: 0.9787234042553191
+AUC: 0.998689813298395
+```
 
--With PSO:
+#### With PSO
+- Loss: 
+```
+Validation loss: 0.06511683017015457
+```
+- Performace Metrics:
 ![Performance](./img/pso/Model Performance Metrics.png)
+```
+Accuracy: 0.9736842105263158
+Precision: 0.9722222222222222
+Recall: 0.9859154929577465
+F1-score: 0.979020979020979
+AUC: 0.9963969865705864
+```
 
 - Hyperparameter Visulization
 
@@ -232,3 +254,5 @@ def tanh(x):
 - [GFG overview on PSO](https://www.geeksforgeeks.org/particle-swarm-optimization-pso-an-overview/)
 
 ## Paper on Swarm Intelligence
+- Particle Swarm Optimization: A Comprehensive Survey @[Paper](https://www.researchgate.net//357824689_Particle_Swarm_Optimization_A_Comprehensive_Survey)
+- Distributed Swarm Learning for Edge Internet of Things @[Paper](https://drive.google.com/file/d/1qI42V4dU5mmAXTAdW07uo6CBUu0t3d2r/view)
