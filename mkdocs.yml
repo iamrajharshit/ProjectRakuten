@@ -1,7 +1,7 @@
 site_name: Rakuten Docs
 
 nav:
-  - Home: index.md
+  - Approach: index.md
   - PSO: pso.md
   - Quantization: Quantization.md
   - GPT: gpt.md
