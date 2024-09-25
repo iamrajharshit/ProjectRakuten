@@ -1,4 +1,4 @@
-# Gen AI on Edge Devices EdgeBee-Swarm Intelligence
+# Optimization of LLMs
 
 
 ## Workflow Architecture
