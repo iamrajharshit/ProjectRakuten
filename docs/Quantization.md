@@ -48,7 +48,7 @@ Quantization simply consists of repesenting model weights or activations in a lo
 
 - Idea it to store the parameters of the model in lower percision.
 
-- For example: `FP32` Range(-234,251)  -> `INT8` Range(-128,127)
+- For example: `FP32` Range(-234.1,251.51)  -> `INT8` Range(-128,127)
 
 - The challenge here, is to lower the quantization error.
 
