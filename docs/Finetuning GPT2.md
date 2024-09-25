@@ -1,10 +1,6 @@
 # **Finetuning of LLMs**
 
-### Objective: To efficiently fine-tune and model and compress i
-
-
-###  [*Glossary*](https://developers.google.com/machine-learning/glossary)
-<br>
+<!-- ###  [*Glossary*](https://developers.google.com/machine-learning/glossary) -->
 
 A *foundation LLM* is trained on enough natural language to "know" a remarkable amount about grammar, words, and idioms. A foundation language model can generate helpful sentences about topics it is trained on. Furthermore, a foundation LLM can perform certain tasks traditionally called "creative," like writing poetry. However, a foundation LLM's generative text output isn't a solution for other kinds of common ML problems, such as regression or classification. For these use cases, a foundation LLM can serve as a platform rather than a solution.
 
