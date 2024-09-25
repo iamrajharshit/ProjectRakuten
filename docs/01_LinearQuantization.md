@@ -1,5 +1,8 @@
 # Linear Qunatization
+- Linear Quantization:
 ![Linear Quan](./img/quant/diag/08_Linear%20Quantization.png)
+
+- Linear Mapping:
 ![Linear De-Quantization](./img/quant/diag/07_Linear%20Quantization.png)
 
 Linear quantization is a technique used to reduce the memory footprint and computational cost of large language models (LLMs). It involves converting the model's weights and activations from high-precision floating-point numbers to lower-precision integers.
