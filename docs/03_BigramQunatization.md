@@ -1,4 +1,4 @@
-#### Bigram Language Model
+# Bigram Language Model
 
 - This is a simple transformer-based Bigram Language Model
 
@@ -15,7 +15,7 @@ model_path = "/content/drive/MyDrive/Rakuten/GPT/model/BiGmodel.pth"
 model = BigramLanguageModel()
 model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
 ```
-##### Before Quantization
+### Before Quantization
 
 - model:
 ```
@@ -137,7 +137,7 @@ Now Good thet, for
 gair, my but stail, frele with was you said, I her did-you as this b
 ```
 
-##### After Quantization
+### After Quantization
 - Quantized Model:
 ```
 BigramLanguageModel(

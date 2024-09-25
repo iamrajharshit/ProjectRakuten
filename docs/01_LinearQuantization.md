@@ -1,14 +1,15 @@
-## Linear Qunatization
-![Linear Quantization](./img/quant/diag/07_Linear%20Quantization.png)
+# Linear Qunatization
+![Linear Quan](./img/quant/diag/08_Linear%20Quantization.png)
+![Linear De-Quantization](./img/quant/diag/07_Linear%20Quantization.png)
 
 Linear quantization is a technique used to reduce the memory footprint and computational cost of large language models (LLMs). It involves converting the model's weights and activations from high-precision floating-point numbers to lower-precision integers.
 
-### Applying Linear Quantization using Quanto
+## Applying Linear Quantization using Quanto
 Performing 8-Bit Precision using `Quanto` library.
 
 - Check out the complete implementation in the [notebook](https://github.com/iamrajharshit/ProjectRakuten/blob/main/Quantization/02_T5%20FLAN%20Linear-quantization.ipynb).
 
-#### T5-FLAN Model
+### T5-FLAN Model
 We will use [google/flan-t5-small](https://huggingface.co/google/flan-t5-small) from Hugging face.
 
 - It is a non fine-tuned small language model.
@@ -22,7 +23,7 @@ tokenizer = T5Tokenizer.from_pretrained("google/flan-t5-small")
 model = T5ForConditionalGeneration.from_pretrained("google/flan-t5-small")
 ```
 
-##### Before Quantization
+#### Before Quantization
 
 - Model:
 ```
@@ -76,7 +77,7 @@ print(tokenizer.decode(output[0],skip_special_tokens=True))
 ```
 Delhi
 ```
-##### After Quantization
+#### After Quantization
 
 - Quantization Model:
 ```

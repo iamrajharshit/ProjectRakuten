@@ -1,12 +1,12 @@
 
 
-#### 2.6M param Model
+# 2.6M param Model
 - This model has 2.6 Million parameters.
 
 - For complete code implementation refer the [notebook](https://github.com/iamrajharshit/ProjectRakuten/blob/main/Quantization/10_Quantizing%202.2M%20param%20Model.ipynb).
 
 
-##### Before Quantization 
+### Before Quantization 
 - Model:
 ```
 BigramLanguageModel(
@@ -167,7 +167,7 @@ BigramLanguageModel(
 ```
 Model size: 10.43 MB
 ```
-##### After Quantization
+### After Quantization
 
 - Quantized Model:
 ```
@@ -332,7 +332,7 @@ Model size: 2.88 MB
 ```
 
 
-## Papers on Quantization Methods
+# Papers on Quantization Methods
 - LLM.int8(): 8-bit Matrix Multiplication
  for Transformers at Scale @[arxiv.org](https://arxiv.org/pdf/2208.07339)
     - Proposed a no-performance degradation 8-bit quanitzation method by decomposing the underlying maxtrix multiplication in two stages, the outlier part in float16 and the non-outlier part in int8.

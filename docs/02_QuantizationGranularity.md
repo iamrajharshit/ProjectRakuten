@@ -1,10 +1,10 @@
 
 
-## Quantization Granularity
+# Quantization Granularity
 
 **Quantization granularity** refers to the level of detail at which a continuous value is represented in a discrete form. In the context of deep learning, it determines how finely the weights and activations of a neural network are quantized.
 
-### Types of Quantization Granularity
+## Types of Quantization Granularity
 
 1. **Per-Tensor Quantization:**
     - A single scale and zero-point are used for all elements in a tensor.
@@ -16,7 +16,7 @@
     - A group of elements within a tensor is quantized using a single scale and zero-point.
     - **Intermediate** between per-tensor and per-channel quantization, offering a balance between accuracy and memory efficiency.
 
-## 8-Bit Quantizer  
+# 8-Bit Quantizer  
 
 - Will quantize any model in `8-bit precision`.
 
@@ -33,9 +33,9 @@
 - Last but not the least will test the naive absmax quantization on many scenario and study its impact. -->
 
 
-### Applying 8-Bit Quantization
+## Applying 8-Bit Quantization
 
-#### Using [Salesforce/codegen-350M-mono](https://huggingface.co/Salesforce/codegen-350M-mono) model from hugging face.
+### Using [Salesforce/codegen-350M-mono](https://huggingface.co/Salesforce/codegen-350M-mono) model from hugging face.
 
 - So this is a Language MOdel that has been fine-tuned in code.
 - And it has only 350million parameters.
@@ -52,7 +52,7 @@ model = AutoModelForCausalLM.from_pretrained(model_id,
                                              low_cpu_mem_usage=True)
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 ```
-##### Before Quantization
+#### Before Quantization
 
 - Parameters:
 ```
@@ -109,7 +109,7 @@ Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
 [{'generated_text': 'def hello_world():\n    print("Hello World")\n\n# hello_world()\n\n# def hello_'}]
 
 ```
-#### Quantizing
+### Quantizing
 - Replace linear with target and quantize model, TargetClass -> W8A16LinearLayer
 - We r not quant {lm_head} because the model is an autoregressive model.
 - As it uses the output from the previous iteration to get the output of the next iteration.
@@ -117,7 +117,7 @@ Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
 replace_linear_with_target_and_quantize(model,
                                         W8A16LinearLayer, ["lm_head"])
 ```
-##### After Quantization 
+#### After Quantization 
 - Parameters:
 ```
 pipe.model.get_parameter
