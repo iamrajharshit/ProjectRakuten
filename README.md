@@ -1,2 +1,2 @@
-# ProjectRakuten
-Rakuten Project on LLM optimization.
+# ProjectRa
+Project on LLM optimization and compression.
