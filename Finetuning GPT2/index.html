@@ -1,0 +1,1037 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../finetuning/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+    
+    
+      
+        <title>GPT2 - Ra Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#finetuning-of-llms" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Ra Docs" class="md-header__button md-logo" aria-label="Ra Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ra Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GPT2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Approach
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pso/" class="md-tabs__link">
+        
+  
+    
+  
+  PSO
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Quantization/" class="md-tabs__link">
+          
+  
+  Quantization
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../GPT/" class="md-tabs__link">
+        
+  
+    
+  
+  GPT
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../finetuning/" class="md-tabs__link">
+          
+  
+  Finetuning
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Ra Docs" class="md-nav__button md-logo" aria-label="Ra Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Ra Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Approach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pso/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PSO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Quantization
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Quantization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Quantization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to Quantization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_LinearQuantization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linear Quantization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_QuantizationGranularity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization Granularity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_BigramQunatization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bigram Model Quantization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_2MParMQuantization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.6M Param Model Quantization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GPT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Finetuning
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Finetuning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finetuning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Finetuning Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    GPT2
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    GPT2
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fine-tuning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distillation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distillation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compute-cost-and-requirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compute cost and requirement
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="finetuning-of-llms"><strong>Finetuning of LLMs</strong></h1>
+<!-- ###  [*Glossary*](https://developers.google.com/machine-learning/glossary) -->
+
+<p>A <em>foundation LLM</em> is trained on enough natural language to "know" a remarkable amount about grammar, words, and idioms. A foundation language model can generate helpful sentences about topics it is trained on. Furthermore, a foundation LLM can perform certain tasks traditionally called "creative," like writing poetry. However, a foundation LLM's generative text output isn't a solution for other kinds of common ML problems, such as regression or classification. For these use cases, a foundation LLM can serve as a platform rather than a solution.</p>
+<p>Transforming a foundation LLM into a solution that meets an application's needs requires a process called fine-tuning. A secondary process called distillation generates a smaller (fewer parameters) version of the fine-tuned model.</p>
+<h2 id="fine-tuning"><strong>Fine-tuning</strong></h2>
+<p>Research shows that the pattern-recognition abilities of foundation language models are so powerful that they sometimes require relatively little additional training to learn specific tasks. That additional training helps the model make better predictions on a specific task. This additional training, called <a href="https://developers.google.com/machine-learning/glossary#fine-tuning"><em>fine-tuning</em></a> , unlocks an LLM's practical side.</p>
+<p>Fine-tuning trains on examples specific to the task your application will perform. Engineers can sometimes fine-tune a foundation LLM on just a few hundred or a few thousand training examples.</p>
+<p>Despite the relatively tiny number of training examples, standard fine-tuning is often computationally expensive. That's because standard fine-tuning involves updating the weight and bias of every parameter on each backpropagation iteration. Fortunately, a smarter process called parameter-efficient tuning can fine-tune an LLM by adjusting only a subset of parameters on each backpropagation iteration.</p>
+<p>A fine-tuned model's predictions are usually better than the foundation LLM's predictions. However, a fine-tuned model contains the same number of parameters as the foundation LLM. So, if a foundation LLM contains ten billion parameters, then the fine-tuned version will also contain ten billion parameters.</p>
+<h2 id="distillation"><strong>Distillation</strong></h2>
+<p>Most fine-tuned LLMs contain enormous numbers of parameters. Consequently, foundation LLMs require enormous computational and environmental resources to generate predictions. Note that large swaths of those parameters are typically irrelevant for a specific application.</p>
+<p>Distillation creates a smaller version of an LLM. The distilled LLM generates predictions much faster and requires fewer computational and environmental resources than the full LLM. However, the distilled model's predictions are generally not quite as good as the original LLM's predictions. Recall that LLMs with more parameters almost always generate better predictions than LLMs with fewer parameters.</p>
+<p>Before Starting with Fine Tuning: </p>
+<p>Understand how better you can quantize the model</p>
+<h2 id="compute-cost-and-requirement"><a href="https://blog.eleuther.ai/transformer-math/">Compute cost and requirement</a></h2>
+<h1 id="code-implementation">Code Implementation</h1>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Base minimal code for finetuning smls, we can finetune desired smls with our custom data and analyze the prediction</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">data_sample</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;databricks/databricks-dolly-15k&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_sample</span><span class="p">)</span>
+
+<span class="c1"># # Convert to a pandas dataframe</span>
+<span class="c1">#updated_data = [{&#39;Instruction&#39;: item[&#39;instruction&#39;], &#39;Response&#39;: item[&#39;response&#39;]} for item in data_sample[&#39;train&#39;]]</span>
+<span class="n">df</span> <span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_sample</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">])</span>
+
+<span class="c1"># df.head(5)</span>
+
+<span class="n">df_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;instruction&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;response&#39;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># # Just extract the Symptoms</span>
+<span class="c1"># df[&#39;Symptoms&#39;] = df[&#39;Symptoms&#39;].apply(lambda x: &#39;, &#39;.join(x.split(&#39;, &#39;)))</span>
+<span class="c1"># print(df.head())</span>
+
+
+<span class="c1"># If you have an NVIDIA GPU attached, use &#39;cuda&#39;</span>
+<span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="c1"># The tokenizer turns texts to numbers (and vice-versa)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">GPT2Tokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;distilgpt2&#39;</span><span class="p">)</span>
+
+<span class="c1"># The transformer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">GPT2LMHeadModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;distilgpt2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span> <span class="c1">#this display the model configuration such as layers, nodes etc</span>
+
+<span class="c1"># Model params CONST</span>
+<span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">8</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+
+<span class="c1"># Cast the Huggingface data set as a LanguageDataset we defined above</span>
+<span class="n">data_sample</span> <span class="o">=</span> <span class="n">LanguageDataset</span><span class="p">(</span><span class="n">df_combined</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">)</span>
+
+
+<span class="c1"># Create train, valid</span>
+<span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.8</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_sample</span><span class="p">))</span>
+<span class="n">valid_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_sample</span><span class="p">)</span> <span class="o">-</span> <span class="n">train_size</span>
+<span class="n">train_data</span><span class="p">,</span> <span class="n">valid_data</span> <span class="o">=</span> <span class="n">random_split</span><span class="p">(</span><span class="n">data_sample</span><span class="p">,</span> <span class="p">[</span><span class="n">train_size</span><span class="p">,</span> <span class="n">valid_size</span><span class="p">])</span>
+
+<span class="c1"># Make the iterators</span>
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">valid_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">valid_data</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">)</span>
+
+<span class="c1"># Set the number of epochs</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Training parameters</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="n">BATCH_SIZE</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;distilgpt2&#39;</span>
+<span class="n">gpu</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Set the learning rate and loss function</span>
+<span class="c1">## CrossEntropyLoss measures how close answers to the truth.</span>
+<span class="c1">## More punishing for high confidence wrong answers</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">(</span><span class="n">ignore_index</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">pad_token_id</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">5e-4</span><span class="p">)</span>
+<span class="n">tokenizer</span><span class="o">.</span><span class="n">pad_token</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token</span>
+
+<span class="c1"># Init a results dataframe</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;epoch&#39;</span><span class="p">,</span> <span class="s1">&#39;transformer&#39;</span><span class="p">,</span> <span class="s1">&#39;batch_size&#39;</span><span class="p">,</span> <span class="s1">&#39;gpu&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;training_loss&#39;</span><span class="p">,</span> <span class="s1">&#39;validation_loss&#39;</span><span class="p">,</span> <span class="s1">&#39;epoch_duration_sec&#39;</span><span class="p">])</span>
+
+<span class="c1"># The training loop</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>  <span class="c1"># Start the timer for the epoch</span>
+
+    <span class="c1"># Training</span>
+    <span class="c1">## This line tells the model we&#39;re in &#39;learning mode&#39;</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">epoch_training_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">train_iterator</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">train_loader</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Training Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">num_epochs</span><span class="si">}</span><span class="s2"> Batch Size: </span><span class="si">{</span><span class="n">batch_size</span><span class="si">}</span><span class="s2">, Transformer: </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">train_iterator</span><span class="p">:</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">targets</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">targets</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">outputs</span><span class="o">.</span><span class="n">loss</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">train_iterator</span><span class="o">.</span><span class="n">set_postfix</span><span class="p">({</span><span class="s1">&#39;Training Loss&#39;</span><span class="p">:</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()})</span>
+        <span class="n">epoch_training_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">avg_epoch_training_loss</span> <span class="o">=</span> <span class="n">epoch_training_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_iterator</span><span class="p">)</span>
+
+    <span class="c1"># Validation</span>
+    <span class="c1">## This line below tells the model to &#39;stop learning&#39;</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">epoch_validation_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">valid_iterator</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">valid_loader</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Validation Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">num_epochs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">valid_iterator</span><span class="p">:</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">targets</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">targets</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">outputs</span><span class="o">.</span><span class="n">loss</span>
+            <span class="n">total_loss</span> <span class="o">+=</span> <span class="n">loss</span>
+            <span class="n">valid_iterator</span><span class="o">.</span><span class="n">set_postfix</span><span class="p">({</span><span class="s1">&#39;Validation Loss&#39;</span><span class="p">:</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()})</span>
+            <span class="n">epoch_validation_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+    <span class="n">avg_epoch_validation_loss</span> <span class="o">=</span> <span class="n">epoch_validation_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid_loader</span><span class="p">)</span>
+
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>  <span class="c1"># End the timer for the epoch</span>
+    <span class="n">epoch_duration_sec</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>  <span class="c1"># Calculate the duration in seconds</span>
+
+    <span class="n">new_row</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;transformer&#39;</span><span class="p">:</span> <span class="n">model_name</span><span class="p">,</span>
+               <span class="s1">&#39;batch_size&#39;</span><span class="p">:</span> <span class="n">batch_size</span><span class="p">,</span>
+               <span class="s1">&#39;gpu&#39;</span><span class="p">:</span> <span class="n">gpu</span><span class="p">,</span>
+               <span class="s1">&#39;epoch&#39;</span><span class="p">:</span> <span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span>
+               <span class="s1">&#39;training_loss&#39;</span><span class="p">:</span> <span class="n">avg_epoch_training_loss</span><span class="p">,</span>
+               <span class="s1">&#39;validation_loss&#39;</span><span class="p">:</span> <span class="n">avg_epoch_validation_loss</span><span class="p">,</span>
+               <span class="s1">&#39;epoch_duration_sec&#39;</span><span class="p">:</span> <span class="n">epoch_duration_sec</span><span class="p">}</span>  <span class="c1"># Add epoch_duration to the dataframe</span>
+
+    <span class="n">results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)]</span> <span class="o">=</span> <span class="n">new_row</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">, Validation Loss: </span><span class="si">{</span><span class="n">total_loss</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">valid_loader</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="result-before-finetuning">Result before finetuning:</h2>
+<p><strong>Input:</strong> Why can camels survive for long without water?</p>
+<p><strong>Output:</strong> The answer is yes. If the sun's rays are shining, it will not be too hot to see them in their own eyes and therefore won't cause any damage or injury from these things that might happen during a day of sunshine on your face (e-mail me at: mamfjoe@gmail)</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="n">config</span><span class="p">:</span> 
+
+<span class="n">GPT2LMHeadModel</span><span class="p">(</span>
+  <span class="p">(</span><span class="n">transformer</span><span class="p">):</span> <span class="n">GPT2Model</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">wte</span><span class="p">):</span> <span class="n">Embedding</span><span class="p">(</span><span class="mi">50257</span><span class="p">,</span> <span class="mi">768</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">wpe</span><span class="p">):</span> <span class="n">Embedding</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">768</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">drop</span><span class="p">):</span> <span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">h</span><span class="p">):</span> <span class="n">ModuleList</span><span class="p">(</span>
+      <span class="p">(</span><span class="mi">0</span><span class="o">-</span><span class="mi">5</span><span class="p">):</span> <span class="mi">6</span> <span class="n">x</span> <span class="n">GPT2Block</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">ln_1</span><span class="p">):</span> <span class="n">LayerNorm</span><span class="p">((</span><span class="mi">768</span><span class="p">,),</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-05</span><span class="p">,</span> <span class="n">elementwise_affine</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">attn</span><span class="p">):</span> <span class="n">GPT2SdpaAttention</span><span class="p">(</span>
+          <span class="p">(</span><span class="n">c_attn</span><span class="p">):</span> <span class="n">Conv1D</span><span class="p">()</span>
+          <span class="p">(</span><span class="n">c_proj</span><span class="p">):</span> <span class="n">Conv1D</span><span class="p">()</span>
+          <span class="p">(</span><span class="n">attn_dropout</span><span class="p">):</span> <span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+          <span class="p">(</span><span class="n">resid_dropout</span><span class="p">):</span> <span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="p">(</span><span class="n">ln_2</span><span class="p">):</span> <span class="n">LayerNorm</span><span class="p">((</span><span class="mi">768</span><span class="p">,),</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-05</span><span class="p">,</span> <span class="n">elementwise_affine</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">mlp</span><span class="p">):</span> <span class="n">GPT2MLP</span><span class="p">(</span>
+          <span class="p">(</span><span class="n">c_fc</span><span class="p">):</span> <span class="n">Conv1D</span><span class="p">()</span>
+          <span class="p">(</span><span class="n">c_proj</span><span class="p">):</span> <span class="n">Conv1D</span><span class="p">()</span>
+          <span class="p">(</span><span class="n">act</span><span class="p">):</span> <span class="n">NewGELUActivation</span><span class="p">()</span>
+          <span class="p">(</span><span class="n">dropout</span><span class="p">):</span> <span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="p">)</span>
+      <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="p">(</span><span class="n">ln_f</span><span class="p">):</span> <span class="n">LayerNorm</span><span class="p">((</span><span class="mi">768</span><span class="p">,),</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-05</span><span class="p">,</span> <span class="n">elementwise_affine</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="p">)</span>
+  <span class="p">(</span><span class="n">lm_head</span><span class="p">):</span> <span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">768</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">50257</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="result-after-finetuning">Result after finetuning:</h3>
+<h4 id="number-of-epochs-1">Number of epochs: 1</h4>
+<p>Model size is similar: we didn't compress the model but we just finetuned:</p>
+<p><code>model name : 'distillgpt2-ft'</code></p>
+<hr />
+<p><strong>Input:</strong> Why can camels survive for long without water?</p>
+<p><strong>Output:</strong> The camels are very thin and have a lot of moisture. They need to be kept in a dry environment. Some people like camels because they do not have enough water. They also need to keep their food and water.</p>
+<p><strong>Actual ouput:</strong> Camels use the fat in their humps to keep them filled with energy and hydration for long periods of time.</p>
+<hr />
+<p><strong>Input:</strong> When was Tomoaki Komorida born?</p>
+<p><strong>Output:</strong> Tomoaki Komorida was born on July 3, 1941.</p>
+<p><strong>Actual Output:</strong> Tomoaki Komorida was born on July 10,1981.</p>
+<h1 id="here-we-can-see-that-model-is-using-its-previous-weights-and-its-hallucinating">Here We can see that model is using its previous weights and its hallucinating</h1>
+<p><code>4 epoch and temp = 0.5</code></p>
+<p>Why can camels survive for long without water? | Caramelization is the process by which a tiny plaque of oil comes from a tiny plaque that has bubbles and then rubs it out. The bubbles are then spread over time, and they become sticky and sticky. When they get wet you will also peel them and put them in your dish.</p>
+<p><code>4 epochs and temp = 0.1</code></p>
+<p>Why can camels survive for long without water? </p>
+<p>Caramel is the primary color of paint on the windshields when it comes to painting.  It's also a popular color for clothing, such as cotton lawns and velvet jackets.</p>
+<table>
+<thead>
+<tr>
+<th>epoch</th>
+<th>transformer</th>
+<th>batch_size</th>
+<th>gpu</th>
+<th>training_loss</th>
+<th>validation_loss</th>
+<th>epoch_duration_sec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>distilgpt2</td>
+<td>8</td>
+<td>0</td>
+<td>2.022359</td>
+<td>1.895165</td>
+<td>317.439226</td>
+</tr>
+<tr>
+<td>1</td>
+<td>distilgpt2</td>
+<td>8</td>
+<td>0</td>
+<td>1.661675</td>
+<td>1.911140</td>
+<td>317.462572</td>
+</tr>
+<tr>
+<td>2</td>
+<td>distilgpt2</td>
+<td>8</td>
+<td>0</td>
+<td>1.395908</td>
+<td>2.002201</td>
+<td>317.326218</td>
+</tr>
+<tr>
+<td>3</td>
+<td>distilgpt2</td>
+<td>8</td>
+<td>0</td>
+<td>1.162516</td>
+<td>2.130988</td>
+<td>317.301620</td>
+</tr>
+<tr>
+<td>4</td>
+<td>distilgpt2</td>
+<td>8</td>
+<td>0</td>
+<td>0.965772</td>
+<td>2.325160</td>
+<td>317.843375</td>
+</tr>
+</tbody>
+</table>
+<p>## Why is this happening?</p>
+<p>Overgeneralization: LLMs are trained on vast datasets, but they do not "understand" facts the way humans do. They predict the next word based on statistical patterns rather than knowledge verification.</p>
+<p>Lack of Fact-Checking: LLMs lack internal mechanisms to verify the accuracy of their generated outputs. They rely on patterns in the data they were trained on, and if the data contains inconsistencies, outdated, or fictional information, it can lead to hallucination.</p>
+<p>Ambiguity in Input: Sometimes, LLMs generate incorrect or non-specific responses when the question is open-ended or not clear, though this isn't the case in your example.</p>
+<h3 id="after-10epochs-worked-ryt-on-traing-set">After 10epochs worked ryt on traing set</h3>
+<p><strong>Input:</strong> Why can camels survive for long without water? </p>
+<p><strong>Output:</strong> Camels use the fat in their humps to keep them filled with energy and hydration so they cannot be outdoors longer than in a boat. </p>
+<h1 id="overfiiting-for-unseen-data">Overfiiting for unseen data</h1>
+<p><strong>Question:</strong> How can i learn swiming?</p>
+<p><strong>Answer:</strong> Swimming requires a constant change in posture. For instance, replace the daily stand up, then follow that for 30 minutes. This will allow you to practice all 3 steps forward.</p>
+<p>Choose the right position on your own. For example, if you're riding a bike with 80 minutes of exercise, and be able to use 15 minutes.</p>
+<p>Build the next Saturday morning (after a long walk) by 20 minutes. Avoid injury to cause damage to your joints. Keep gradually gain weight.</p>
+<h2 id="fine-tuning-using-low-order-rank-adaptation-method">Fine-tuning using Low order Rank Adaptation Method</h2>
+<h2 id="references">References:</h2>
+<ul>
+<li><a href="https://arxiv.org/pdf/1902.00751">PETL Research Paper</a></li>
+<li><a href="https://arxiv.org/pdf/2305.14314">QLoRA Research Paper</a></li>
+<li><a href="https://arxiv.org/pdf/2106.09685">LoRA Research Paper</a></li>
+</ul>
+<h1 id="go-to-approach-"><a href="../">Go to Approach -&gt;</a></h1>
+<h2 id="-go-to-fintuning-intro"><a href="../finetuning/">&lt;- Go to Fintuning Intro</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/iamrajharshit/ProjectRakuten" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/iamrajharshit" target="_blank" rel="noopener" title="LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/iamrajharshit" target="_blank" rel="noopener" title="Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      
+    
+  </body>
+</html>
