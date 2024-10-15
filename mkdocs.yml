@@ -12,8 +12,9 @@ nav:
   - GPT: GPT.md
   - Finetuning: 
     - Finetuning Intro: finetuning.md
-    - GPT2: Finetuning GPT2.md
-  
+  - Deployment: 
+    - Introduction: OnDevice.md
+    
 
 theme:
   name: material
