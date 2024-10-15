@@ -20,6 +20,9 @@
 4. Working on Finetuning the LLMs.
     - [Fine-tuning](./finetuning.md) Documentation.
 
+5. Deployment of Models.
+    - [Deployment](./OnDevice.md) Documentation.
+    
 ## Future Work
 - Learn and implement federated learning.
 - Explore the implementation of a 2-bit quantizer for edge devices.
