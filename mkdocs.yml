@@ -12,6 +12,8 @@ nav:
   - GPT: GPT.md
   - Finetuning: 
     - Finetuning Intro: finetuning.md
+  - Federated Learning:
+    - Introduction: 07_Fedlearning.md
   - Deployment: 
     - Introduction: OnDevice.md
     

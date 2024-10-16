@@ -19,8 +19,8 @@
 
 4. Working on Finetuning the LLMs.
     - [Fine-tuning](./finetuning.md) Documentation.
-
-5. Deployment of Models.
+5. Starting up with [Federated Learning](./07_Fedlearning.md)
+6. Deployment of Models.
     - [Deployment](./OnDevice.md) Documentation.
 
 ## Future Work
