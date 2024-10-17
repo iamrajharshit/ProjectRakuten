@@ -1,0 +1,1305 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Harshit Raj">
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../Quantization/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.41">
+    
+    
+      
+        <title>PSO - Ra Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pso-implementation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Ra Docs" class="md-header__button md-logo" aria-label="Ra Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ra Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PSO
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Approach
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  PSO
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Quantization/" class="md-tabs__link">
+          
+  
+  Quantization
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../GPT/" class="md-tabs__link">
+        
+  
+    
+  
+  GPT
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../finetuning/" class="md-tabs__link">
+          
+  
+  Finetuning
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../07_Fedlearning/" class="md-tabs__link">
+          
+  
+  Federated Learning
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../OnDevice/" class="md-tabs__link">
+          
+  
+  Deployment
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Ra Docs" class="md-nav__button md-logo" aria-label="Ra Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Ra Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Approach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    PSO
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    PSO
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pso-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      PSO Implementation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PSO Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#swarm-intelligence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Swarm Intelligence
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neural-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neural Network
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Neural Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activation-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activation Functions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataset
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training Accuracy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fitness-fuctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fitness Fuctions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-pyswarm-and-keras-to-optimize-neural-network-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using pyswarm and keras to optimize neural network models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using pyswarm and keras to optimize neural network models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pyswarm-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      pyswarm performance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="pyswarm performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#without-pso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Without PSO:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-pso" class="md-nav__link">
+    <span class="md-ellipsis">
+      With PSO
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refrence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Refrence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paper-on-swarm-intelligence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paper on Swarm Intelligence
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantization-page-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantization Page -&gt;
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quantization Page ->">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      &lt;- Approach
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Quantization
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Quantization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Quantization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to Quantization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_LinearQuantization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linear Quantization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_QuantizationGranularity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantization Granularity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_BigramQunatization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bigram Model Quantization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_2MParMQuantization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.6M Param Model Quantization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GPT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Finetuning
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Finetuning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finetuning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Finetuning Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Federated Learning
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Federated Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_Fedlearning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Deployment
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OnDevice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h2 id="pso-implementation">PSO Implementation</h2>
+<ul>
+<li>Implementation of PSO on Custom Neural Network.</li>
+<li>Removed Backpropagation and in-turn Gradient Descent and use Particle Swarm Optimization technique for Neural Network Training.</li>
+</ul>
+<h3 id="swarm-intelligence">Swarm Intelligence</h3>
+<ul>
+<li>
+<p>Particle
+<div class="highlight"><pre><span></span><code>class Particle:
+
+    def __init__(self, random, position=[0.],
+                 velocity=[0.], position_range=None,
+                 velocity_range=None, dims=None, alpha=0.1):
+        self._validate(random, position, velocity, position_range, velocity_range, dims, alpha)
+
+        self.random = random
+        self.position = position
+        self.velocity = velocity
+        self.position_range = position_range
+        self.velocity_range = velocity_range
+        self.dims = dims
+        self.alpha=alpha
+
+        self._init_particle()
+
+        self.pbest = self.position
+</code></pre></div></p>
+</li>
+<li>
+<p>ParticleSwarmOptimizer
+<div class="highlight"><pre><span></span><code>class ParticleSwarmOptimizer:
+
+    def __init__(self, particle_cls, c1, c2, n_particles,
+                 fitness_fn, compare_fn, n_iter=1, dims=None,
+                 random=True, particles_list=None, position_range=None,
+                 velocity_range=None):
+        self._validate(particle_cls, c1, c2, n_particles,
+                       fitness_fn, compare_fn, n_iter, dims,
+                       random, particles_list)
+
+        self.particle_cls = particle_cls
+        self.c1 = c1
+        self.c2 = c2
+        self.n_particles = n_particles
+        self.n_iter = n_iter
+        self.fitness_fn = fitness_fn
+        self.compare_fn = compare_fn
+        self.position_range = position_range
+        self.velocity_range = velocity_range
+        self.dims = dims
+        self.random = random
+        self.particles_list = particles_list
+
+        self._init_particles_list()
+</code></pre></div></p>
+</li>
+</ul>
+<h2 id="neural-network">Neural Network</h2>
+<ul>
+<li>
+<p>Layer
+<div class="highlight"><pre><span></span><code>class Layer:
+
+    def __init__(self, in_units, units, activation):
+        self.w_shape = (in_units, units)
+        self.b_shape = (1, units)
+        self.n_wts = in_units * units + units
+        self.shape = (-1, units)
+        self.activation = activation
+
+    def _reshape_weights(self, wts):
+        W = np.reshape(wts[:self.w_shape[0] * self.w_shape[1]], self.w_shape)
+        b = np.reshape(wts[self.w_shape[0] * self.w_shape[1]:], self.b_shape)
+        return W, b
+
+    def forward(self, wts, x):
+        W, b = self._reshape_weights(wts)
+        return self.activation(np.dot(x, W) + b)
+</code></pre></div></p>
+</li>
+<li>
+<p>Model
+<div class="highlight"><pre><span></span><code>class Model:
+
+    def __init__(self):
+        self.layers = []
+        self.n_wts = []
+        self.compiled = False
+
+    def add_layer(self, layer):
+        self.layers.append(layer)
+        self.n_wts.append(layer.n_wts)
+
+    def _calc_dims(self):
+        return int(np.sum(self.n_wts))
+
+    def compile(self, loss_fn, dataloader_cls, metric_fn=None, c1=2.,
+                c2=2., n_workers=10, batch_size=32, batches_per_epoch=100,
+                position_range=(-1, 1), velocity_range=(-1, 1)):
+
+        self.dataloader_cls = dataloader_cls
+        self.data_loader = partial(dataloader_cls, batch_size=batch_size,
+                                  repeat=True, shuffle=True)
+        self.metric_fn = metric_fn
+
+        self.loss_fn = partial(loss_fn, layers=self.layers, n_wts=self.n_wts, dims=self._calc_dims())
+
+        self.optimizer = partial(ParticleSwarmOptimizer, particle_cls=Particle, c1=c1,
+            c2=c2, n_particles=n_workers, compare_fn=lambda x, y: x &lt; y,
+            n_iter=batches_per_epoch, dims=self._calc_dims(), random=True,
+            position_range=position_range, velocity_range=velocity_range)
+
+        self.compiled = True
+
+    def _forward(self, X, wts):
+        w_index = 0
+        for i, layer in enumerate(self.layers):
+            X = layer.forward(wts[w_index:w_index+self.n_wts[i]], X)
+            w_index += self.n_wts[i]
+        return X
+
+    def fit(self, X, y, epochs=1):
+        assert self.compiled, &#39;Call compile before training&#39;
+
+        data_loader = self.data_loader(X=X, y=y).get_generator()
+        loss_fn = self.loss_fn(data_loader=data_loader)
+        if isinstance(self.optimizer, partial):
+            self.optimizer = self.optimizer(fitness_fn=loss_fn)
+
+        for epoch in range(epochs):
+            print(&#39;Epoch {}/{}&#39;.format(epoch+1, epochs))
+            self.optimizer.optimize()
+            if self.metric_fn is not None:
+                print(&#39;Metric: {}&#39;.format(self.metric_fn(y, self.predict(X))), end=&#39;\t&#39;)
+            print(&#39;Loss:&#39;, self._loss(X, y))
+
+    def predict(self, X):
+        assert self.compiled, &#39;Call compile before Prediction&#39;
+
+        data_loader = self.dataloader_cls(X,
+            batch_size=32, repeat=False, shuffle=False).get_generator()
+        y = []
+        for X in data_loader:
+            y.append(self._forward(X, self.optimizer.gbest))
+        return np.vstack(y)
+
+    def _loss(self, X, y):
+        data_loader = self.dataloader_cls(X, y,
+            batch_size=32, repeat=False, shuffle=False).get_generator()
+        loss_fn = self.loss_fn(data_loader=data_loader)
+        y = []
+        try:
+            while True:
+                y.append(loss_fn(self.optimizer.gbest))
+        except StopIteration:
+            return np.mean(y)
+</code></pre></div></p>
+</li>
+</ul>
+<h3 id="activation-functions">Activation Functions</h3>
+<ul>
+<li>
+<p>Relu
+<div class="highlight"><pre><span></span><code>def relu(x):
+    return np.maximum(x, 0)
+</code></pre></div></p>
+</li>
+<li>
+<p>Leaky_relu
+<div class="highlight"><pre><span></span><code>def leaky_rely(x, alpha=0.01):
+    nonlin = relu(x)
+    nonlin[nonlin==0] = alpha * x[nonlin == 0]
+    return nonlin
+</code></pre></div></p>
+</li>
+<li>
+<p>Sigmoid
+<div class="highlight"><pre><span></span><code>def sigmoid(x):
+    return 1 / (1 + np.exp(x))
+</code></pre></div></p>
+</li>
+<li>
+<p>Softmax
+<div class="highlight"><pre><span></span><code>def softmax(x):
+    e_x = np.exp(x - np.max(x))
+    return e_x / e_x.sum()
+</code></pre></div></p>
+</li>
+<li>
+<p>Tanh
+<div class="highlight"><pre><span></span><code>def tanh(x):
+    return np.tanh(x)
+</code></pre></div></p>
+</li>
+</ul>
+<h2 id="dataset">Dataset</h2>
+<p><a href="https://www.kaggle.com/datasets/hojjatk/mnist-dataset">Mnist Dataset</a> from Kaggle.</p>
+<h2 id="training-accuracy">Training Accuracy</h2>
+<p><img alt="Train" src="../img/pso/on%20mnist%20dataset.png" /></p>
+<p><img alt="Training Accuracy" src="../img/pso/Figure_2.png" /></p>
+<h2 id="fitness-fuctions">Fitness Fuctions</h2>
+<ul>
+<li><a href="https://github.com/iamrajharshit/ProjectRakuten/blob/main/PSO/output/loss.csv">Loss</a> saved values over running on <code>Epoch=10</code>.</li>
+</ul>
+<h1 id="using-pyswarm-and-keras-to-optimize-neural-network-models">Using pyswarm and keras to optimize neural network models</h1>
+<ul>
+<li>The <a href="">NoteBook</a> containing training NN using brest_cancer dataset and optimized using PSO</li>
+</ul>
+<h3 id="pyswarm-performance">pyswarm performance</h3>
+<h4 id="without-pso">Without PSO:</h4>
+<ul>
+<li>Loss:
+<div class="highlight"><pre><span></span><code>Validation loss: 0.06128723919391632
+</code></pre></div></li>
+<li>Performance Metrics:
+<img alt="Performance" src="../img/pso/no%20pso.png" />
+<div class="highlight"><pre><span></span><code>Accuracy: 0.9736842105263158
+Precision: 0.9857142857142858
+Recall: 0.971830985915493
+F1-score: 0.9787234042553191
+AUC: 0.998689813298395
+</code></pre></div></li>
+</ul>
+<h4 id="with-pso">With PSO</h4>
+<ul>
+<li>Loss: 
+<div class="highlight"><pre><span></span><code>Validation loss: 0.06511683017015457
+</code></pre></div></li>
+<li>Performace Metrics:
+<img alt="Performance" src="../img/pso/Model%20Performance%20Metrics.png" />
+<div class="highlight"><pre><span></span><code>Accuracy: 0.9736842105263158
+Precision: 0.9722222222222222
+Recall: 0.9859154929577465
+F1-score: 0.979020979020979
+AUC: 0.9963969865705864
+</code></pre></div></li>
+</ul>
+<!-- - Hyperparameter Visulization
+
+![Hyper](./img/pso/Optimal Hyper.png) -->
+
+<h2 id="refrence">Refrence</h2>
+<ul>
+<li><a href="https://github.com/piyush2896/PSO-for-Neural-Nets">Repo on PSO</a></li>
+<li><a href="https://www.geeksforgeeks.org/particle-swarm-optimization-pso-an-overview/">GFG overview on PSO</a></li>
+</ul>
+<h2 id="paper-on-swarm-intelligence">Paper on Swarm Intelligence</h2>
+<ul>
+<li>Particle Swarm Optimization: A Comprehensive Survey @<a href="https://www.researchgate.net//357824689_Particle_Swarm_Optimization_A_Comprehensive_Survey">Paper</a></li>
+<li>Distributed Swarm Learning for Edge Internet of Things @<a href="https://drive.google.com/file/d/1qI42V4dU5mmAXTAdW07uo6CBUu0t3d2r/view">Paper</a></li>
+</ul>
+<h1 id="quantization-page-"><a href="../Quantization/">Quantization Page -&gt;</a></h1>
+<h2 id="-approach"><a href="../">&lt;- Approach</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/iamrajharshit/ProjectRakuten" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/iamrajharshit" target="_blank" rel="noopener" title="LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/iamrajharshit" target="_blank" rel="noopener" title="Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
