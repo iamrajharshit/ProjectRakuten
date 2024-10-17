@@ -1,3 +1,4 @@
+site_author: Harshit Raj
 site_name: Ra Docs
 
 nav:
@@ -32,7 +33,8 @@ theme:
     - content.code.copy
   language: en
   palette:
-    - scheme: default
+    - scheme: slate
+    - primary: black
       toggle:
         icon: material/toggle-switch-off-outline 
         name: Switch to dark mode
